@@ -23,7 +23,8 @@ mongoose.connect(process.env.DB_URL)
 
 
 //settings
-app.set('port', process.env.PORT || 3000);
+//app.set('port', process.env.PORT || 3000);
+var port = process.env.PORT || 8000
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -45,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //starting server
 const host = process.env.HOST || '0.0.0.0';
-server.listen(app.get('port'),host, ()=>{
+server.listen(port,host, ()=>{
     console.log("server on port ",app.get('port'))
 
 })
